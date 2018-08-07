@@ -1,15 +1,29 @@
-const merge = require('webpack-merge');
-const webpackBaseConf = require('./webpack.base.conf');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const config = merge(webpackBaseConf, {
+
+const config = {
+    entry: './src/js/main.js',
+    output: {
+        filename: 'js/main.min.js',
+        path: __dirname + '../../dist'
+    },
+    optimization: {
+        minimizer: [
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
     module: {
         rules: [{
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader'],
-                })
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -18,10 +32,16 @@ const config = merge(webpackBaseConf, {
         ]
     },
     plugins: [
-        new ExtractTextPlugin({
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        }),
+        new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
         })
     ]
-});
+};
 
 module.exports = config;

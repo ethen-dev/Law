@@ -3,6 +3,7 @@ const hotClient =
 
 hotClient.subscribe(function (event) {
     if (event.action === 'reload') {
+        console.log('Reloading')
         window.location.reload()
     }
 });
