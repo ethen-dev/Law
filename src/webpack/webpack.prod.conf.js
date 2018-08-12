@@ -10,6 +10,7 @@ const config = {
         filename: 'js/main.min.js',
         path: __dirname + '../../dist'
     },
+    mode: 'production',
     optimization: {
         minimizer: [
             new OptimizeCSSAssetsPlugin({})
@@ -38,9 +39,6 @@ const config = {
         }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
         })
     ]
 };

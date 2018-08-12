@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    overflow: hidden;
+}
+
 #wellcome-screen {
     background-image: url(../images/sebastian-pichler-25154-unsplash.jpg);
     background-repeat: no-repeat;
@@ -17,20 +21,30 @@
 }
 
 #menu {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: auto;
-    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
     z-index: 1;
     .menu-list {
+        height: 100px;;
         display: flex;
         justify-content: flex-end;
-        color: white;
+        color: black;
         list-style: none;
         li {
-            padding: 15px;
+            background: white;
+            padding: 35px;
+            min-width: 75px;
+            text-align: center;
+            transition: border 0.5s;
+            border-top: 4px solid #911c1c;
+            &:hover {
+                border-top: 4px solid red;
+                opacity: 0.9;
+            }
         }
     }
 }
@@ -39,8 +53,6 @@
     width: 100%;
     height: 100vh;
     background: white;
-    position: relative;
-    z-index: 2;
-    top: 100vh;
+    transform: translateY(100vh);
     border-bottom: 2px solid black;
 }

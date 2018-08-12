@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/main.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/main.min.js"></script>
+</head>
+
+<body>
+<div id='app'>
         <nav id="menu">
-            <ul class="menu-list">
+            <ul class="menu-list" >
                 <li>Inicio</li>
-                <li>Blog</li>
+                <li v-on:click="intro" id="p">Blog</li>
                 <li>Contacto</li>
                 <li>Localización</li>
             </ul>
         </nav>
         <div id="wellcome-screen"></div>
         <section class="content"></section>
-        <section class="content"></section>
-        <section class="content"></section>
-        <section class="content"></section>
-    </body>
+    </div>
+
+</body>
+
 </html>

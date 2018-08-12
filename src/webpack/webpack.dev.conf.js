@@ -6,12 +6,10 @@ webpackBaseConf.entry = ['./src/webpack/dev-client'].concat(webpackBaseConf.entr
 
 const config = merge(webpackBaseConf, {
     devtool: 'cheap-eval-source-map',
+    mode: 'development',
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        })
     ]
 });
 

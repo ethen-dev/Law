@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "GA Web Page",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "vue": "^2.5.17"
+  },
   "devDependencies": {
     "css-loader": "^1.0.0",
     "express": "^4.16.3",
