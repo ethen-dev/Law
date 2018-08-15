@@ -10,19 +10,30 @@ const config = {
         path: __dirname + '../../dist'
     },
     module: {
-        rules: [{
+        rules: [
+            {
             test: /\.scss$/,
-            use: [
-                {
-                    loader: MiniCssExtractPlugin.loader,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    'sass-loader'
+                    ]
                 },
-                'css-loader',
-                'sass-loader'
-                ]
+            {
+                test: /\.(png|jpe?g|gif|svg|ttf)(\?.*)?$/,
+                loader: 'url-loader',
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             }
         ]
     },

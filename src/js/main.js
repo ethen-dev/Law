@@ -5,43 +5,50 @@ import Vue from './vue.js';
 import anime from 'animejs';
 
 
-window.onload = function() {
-
-    var p = document.getElementById('p');
-    p.addEventListener('click', () => {
-     console.log('hoy')
-    });
-    
-    console.log(p)
-    
+window.onload = function() {    
     new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue!'
+            state: {
+                menuActive: 'home'
+            },
+            height: ''
+        },
+        computed: {
+            activeMenu() {
+                return this.state.menuActive;
+            },
+            windowHeight() {
+                return this.height;
+            }
         },
         mounted() {
-            // this.intro();
+            this.height = window.innerHeight;
         },
         methods: {
             intro() {
-                let height = window.innerHeight;
-                let timeline = anime.timeline();
+                let introProps = {
+                    toTop: [this.windowHeight, 0],
+                    toBottom: [0, this.windowHeight],
+                    opTop: [0, 1],
+                    opBottom: [1, 0],
+                };
+                console.log(this.activeMenu)
+                let direction;
+                this.activeMenu === 'home' ? direction = introProps.toTop : direction = introProps.toBottom;
+                let opacity;
+                this.activeMenu === 'home' ? opacity = introProps.opTop : opacity = introProps.opBottom;
 
-                timeline
-                .add({
-                    targets: '#menu',
-                    translateY: [0, 100],
-                    opacity: [1, 0],
-                    duration: 700,
-                    easing: 'easeOutCubic'
-                })
-                .add({
+                console.log(direction)
+
+                anime({
                     targets: '.content',
-                    translateY: [0, -height],
-                    opacity: [0, 1],
+                    translateY: direction,
+                    opacity: opacity,
                     duration: 1000,
                     easing: 'easeOutCubic'
                 })
+                this.state.menuActive = 'contact';
             }
         }
     })

@@ -1,14 +1,65 @@
+
+@import '_global.scss';
+
 * {
     margin: 0;
     padding: 0;
+    font-family: $font-main
 }
 
 body {
     overflow: hidden;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #wellcome-screen {
-    background-image: url(../images/sebastian-pichler-25154-unsplash.jpg);
+    .content-container {
+        margin-left: 10%;
+        min-width: 615px;
+        width: 40%;
+        h1 {
+            padding: 15px;
+            background: $d-red;
+            margin-bottom: 5px;
+            color: $white;
+            width: 30%;
+            border-radius: 2px;
+        }
+        h3 {
+            padding: 25px;
+            background: $white;
+            margin-bottom: 5px;
+            color: $d-grey;
+            text-align: justify;
+            opacity: 0.9;
+            border-radius: 2px;
+        }
+        .container {
+            width: 100%;
+            height: auto;
+            justify-content: flex-end;
+            border-radius: 2px;
+            .btn-dred {
+                padding: 20px;
+                background: $d-red;
+                color: $white;
+                border-radius: 2px;
+                transition: all 0.2s;
+                &:hover {
+                    background: $red;
+                }
+            }
+        }
+    }
+}
+
+#wellcome-screen {
+    background-image: url(../media/images/sebastian-pichler-25154-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -21,29 +72,29 @@ body {
 }
 
 #menu {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
+    right: 5%;
+    top: 5%;
+    position: absolute;
     z-index: 1;
     .menu-list {
-        height: 100px;;
+        height: auto;
         display: flex;
         justify-content: flex-end;
-        color: black;
         list-style: none;
+        background: rgba(0,0,0,0.1);
+        border-radius: 2px;
         li {
-            background: white;
-            padding: 35px;
-            min-width: 75px;
+            padding: 15px;
             text-align: center;
-            transition: border 0.5s;
-            border-top: 4px solid #911c1c;
-            &:hover {
-                border-top: 4px solid red;
+            color: white;
+            transition: color 0.5s;
+            &:hover, &.active {
+                color: $red;
                 opacity: 0.9;
+            }
+            &.active { 
+                color: $d-red;
+                pointer-events: none;
             }
         }
     }
@@ -54,5 +105,4 @@ body {
     height: 100vh;
     background: white;
     transform: translateY(100vh);
-    border-bottom: 2px solid black;
 }

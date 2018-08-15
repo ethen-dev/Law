@@ -6,22 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="css/main.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/main.min.js"></script>
 </head>
 
 <body>
-<div id='app'>
+    <div id='app'>
         <nav id="menu">
-            <ul class="menu-list" >
-                <li>Inicio</li>
-                <li v-on:click="intro" id="p">Blog</li>
-                <li>Contacto</li>
-                <li>Localización</li>
+            <ul class="menu-list">
+                <li :class="{active: activeMenu == 'home'}" @click="[intro(), state.menuActive='home']">Inicio</li>
+                <li :class="{active: activeMenu == 'blog'}" @click="state.menuActive='blog'">Blog</li>
+                <li :class="{active: activeMenu == 'contact'}" @click="state.menuActive='contact'">Contacto</li>
+                <li :class="{active: activeMenu == 'location'}" @click="state.menuActive='location'">Localización</li>
             </ul>
         </nav>
-        <div id="wellcome-screen"></div>
-        <section class="content"></section>
+        <div id="wellcome-screen" class="flex-container">
+            <div class="content-container">
+                <h1>Bienvenido</h1>
+                <h3>Mi nombre es Segismundo González Fernández; Graduado en Derecho por la Universidad Nacional de Educación
+                    a Distancia (UNED) y Abogado del Ilustre Colegio de Abogados de Valencia.
+                    <br>
+                    <br> Tengo el Master Universitario en Acceso en la Abogacía. Así mismo, complementando la formación jurídica,
+                    soy Licenciado en Ciencias Económicas y Empresariales por la Universidad de Valencia.
+                    <br>
+                    <br> Firmemente convencido de que el acceso a la Justicia debe ser libre y universal para todas las personas,
+                    ofrezco mis servicios con un claro objetivo, conseguir la máxima satisfacción del cliente, esto es, de
+                    Usted.
+                    <br>
+                    <br> Si lo desea puede ponerse en contacto conmigo accediendo al formulario de contacto pulsando en el boton
+                    "entrar ", situado debajo de estas lineas.
+                </h3>
+                <div class="flex-container container">
+                    <div class="btn-dred" v-on:click="intro">Entrar
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="content "></section>
     </div>
 
 </body>
