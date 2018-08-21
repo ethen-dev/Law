@@ -18,7 +18,17 @@ body {
 }
 
 #wellcome-screen {
-    .content-container {
+    background-image: url(../media/images/DSC_0048.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    .wellcome-content {
         margin-left: 10%;
         min-width: 615px;
         width: 40%;
@@ -58,19 +68,6 @@ body {
     }
 }
 
-#wellcome-screen {
-    background-image: url(../media/images/sebastian-pichler-25154-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 0;
-}
-
 #menu {
     right: 5%;
     top: 5%;
@@ -81,13 +78,16 @@ body {
         display: flex;
         justify-content: flex-end;
         list-style: none;
-        background: rgba(0,0,0,0.1);
         border-radius: 2px;
         li {
+            color: white;
             padding: 15px;
             text-align: center;
-            color: white;
-            transition: color 0.5s;
+            transition: color 0.5s 0.5s;
+            &.dark {
+                background: none;
+                color: $d-grey;
+            }
             &:hover, &.active {
                 color: $red;
                 opacity: 0.9;
@@ -100,9 +100,99 @@ body {
     }
 }
 
-.content {
+.content-container {
     width: 100%;
     height: 100vh;
-    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: $white;
     transform: translateY(100vh);
+    .content[data-content="contact"] {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            width: 60%;
+            color: $d-red;
+            margin-bottom: 25px;
+        }
+        form {
+            font-weight: bold;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 60%;
+            input {
+                border: none;
+                padding: 15px;
+                border-bottom: 2px solid $d-red;
+                margin: 1%;
+                &[name="name"] {
+                    width: 100%;
+                }
+                &[name="surname"] {
+                    width: 100%;
+                }
+                &[name="mail"] {
+                    width: 100%;
+                }
+                &[name="phone"] {
+                    width: 100%;
+                }
+                &[name="subject"] {
+                    width: 100%;
+                }
+                &:focus, &:hover {
+                    outline: none;
+                    border-bottom: 2px solid $red;
+                }
+            }
+            textarea {
+                margin: 10px;
+                padding: 15px;
+                border: none;
+                border-radius: 2px;
+                width: 100%;
+                background: rgba(0,0,0,0.1);
+            }
+            button {
+                margin: 10px;
+                padding: 20px;
+                background: $d-red;
+                color: $white;
+                transition: all 0.3s;
+                width: 150px;
+                border: none;
+                border-radius: 2px;
+                font-size: 1.3em;
+                &:hover {
+                    background: $red;
+                }
+            }
+        }
+        &.fill {
+            background: $d-red;
+            flex-direction: column;
+            h1 {
+                width: 80%;
+                color: $white;
+                margin-bottom: 25px;
+            }
+            iframe {
+                height: 51%;
+                width: 80%;
+                margin-bottom: 25px;
+            }
+            ul {
+                list-style: none;
+                width: 80%;
+                color: white;
+            }
+        }
+    }
 }

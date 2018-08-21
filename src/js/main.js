@@ -42,7 +42,7 @@ window.onload = function() {
                 console.log(direction)
 
                 anime({
-                    targets: '.content',
+                    targets: '.content-container',
                     translateY: direction,
                     opacity: opacity,
                     duration: 1000,

@@ -13,14 +13,14 @@
     <div id='app'>
         <nav id="menu">
             <ul class="menu-list">
-                <li :class="{active: activeMenu == 'home'}" @click="[intro(), state.menuActive='home']">Inicio</li>
-                <li :class="{active: activeMenu == 'blog'}" @click="state.menuActive='blog'">Blog</li>
-                <li :class="{active: activeMenu == 'contact'}" @click="state.menuActive='contact'">Contacto</li>
-                <li :class="{active: activeMenu == 'location'}" @click="state.menuActive='location'">Localización</li>
+                <li :class="{active: activeMenu == 'home', dark: activeMenu !== 'home'}" @click="[intro(), state.menuActive='home']">Inicio</li>
+                <li :class="{active: activeMenu == 'blog', dark: activeMenu !== 'home'}" @click="state.menuActive='blog'">Blog</li>
+                <li :class="{active: activeMenu == 'contact', dark: activeMenu !== 'home'}" @click="state.menuActive='contact'">Contacto</li>
+                <li :class="{active: activeMenu == 'location', dark: activeMenu !== 'home'}" @click="state.menuActive='location'">Localización</li>
             </ul>
         </nav>
         <div id="wellcome-screen" class="flex-container">
-            <div class="content-container">
+            <div class="wellcome-content">
                 <h1>Bienvenido</h1>
                 <h3>Mi nombre es Segismundo González Fernández; Graduado en Derecho por la Universidad Nacional de Educación
                     a Distancia (UNED) y Abogado del Ilustre Colegio de Abogados de Valencia.
@@ -41,7 +41,29 @@
                 </div>
             </div>
         </div>
-        <section class="content "></section>
+        <section class="content-container">
+            <div class="content fill" data-content="contact">
+                <h1>¿Donde estoy?</h1>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d876.7910907321462!2d-0.190464456858227!3d38.968540982635524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61e9ca44ede26d%3A0x9f54d51400fe1ead!2sPla%C3%A7a+Alqueria+Nova%2C+46702+Gandia%2C+Valencia!5e0!3m2!1ses!2ses!4v1534692650069"
+                 frameborder="0" style="border:0" allowfullscreen></iframe>
+                 <ul>
+                     <li>Calle Alqueria Nova</li>
+                     <li>Gandia, 46702</li>
+                 </ul>
+            </div>
+            <div class="content" data-content="contact">
+                <h1>Contacto</h1>
+                <form action="send">
+                    <input name="name" type="text" placeholder="Nombre">
+                    <input name="surname" type="text" placeholder="Apellidos">
+                    <input name="mail" type="text" placeholder="E-Mail">
+                    <input name="phone" type="text" placeholder="Telefono">
+                    <input name="subject" type="text" placeholder="Asunto">
+                    <textarea name="consult" id="" cols="30" rows="10" placeholder="Consulta"></textarea>
+                    <button>Enviar</button>
+                </form>
+            </div>
+        </section>
     </div>
 
 </body>
