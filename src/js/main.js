@@ -5,12 +5,14 @@ import Vue from './vue.js';
 import anime from 'animejs';
 
 
-window.onload = function() {    
+window.onload = function() { 
+
     new Vue({
         el: '#app',
         data: {
             state: {
                 menuActive: 'home',
+                mobile: false,
             },
             height: ''
         },
@@ -47,8 +49,6 @@ window.onload = function() {
                         delay: 1000
                     })
                 }
-
-
             },
             intro(to) {
                 let introProps = {
@@ -61,10 +61,18 @@ window.onload = function() {
                 this.activeMenu === 'home' ? direction = introProps.toTop : direction = introProps.toBottom;
                 let opacity;
                 this.activeMenu === 'home' ? opacity = introProps.opTop : opacity = introProps.opBottom;
-
-                this.activeMenu !== 'home' ? this.state.menuActive = 'home' : this.state.menuActive = to;
+                
+                setTimeout(() => {
+                    this.activeMenu !== 'home' ? this.state.menuActive = 'home' : this.state.menuActive = to;
+                }, 500);
                 
                 let timeline = anime.timeline();
+                anime({
+                    targets: '.content-container',
+                    scaleY: [0 , 1],
+                    duration: 0
+                })
+
                 anime({
                     targets: '.content-container',
                     translateY: direction,
@@ -79,8 +87,7 @@ window.onload = function() {
                     duration: 4000,
                     delay: 1500
                 })
-
-
+                
             }
         }
     })

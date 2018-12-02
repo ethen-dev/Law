@@ -23,8 +23,7 @@
             <div class="wellcome-content">
 
                 <div class="flex-container container">
-                    <div class="btn-dred" v-on:click="intro('who')">Entrar
-                    </div>
+                    <!-- <div class="btn-dred" v-on:click="intro('who')">Entrar                    </div> -->
                 </div>
             </div>
         </div>
@@ -34,19 +33,19 @@
                     <!-- <h1>Contacto</h1> -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d876.7910907321462!2d-0.190464456858227!3d38.968540982635524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61e9ca44ede26d%3A0x9f54d51400fe1ead!2sPla%C3%A7a+Alqueria+Nova%2C+46702+Gandia%2C+Valencia!5e0!3m2!1ses!2ses!4v1534692650069"
                         frameborder="0" style="border:0" allowfullscreen></iframe>
-                    <ul>
+                    <!-- <ul>
                         <li>Calle Alqueria Nova</li>
                         <li>Gandia, 46702</li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div class="content">
                     <h1>Contacto</h1>
-                    <form action="send">
-                        <input name="name" type="text" placeholder="Nombre">
-                        <input name="surname" type="text" placeholder="Apellidos">
-                        <input name="mail" type="text" placeholder="E-Mail">
-                        <input name="phone" type="text" placeholder="Telefono">
-                        <input name="subject" type="text" placeholder="Asunto">
+                    <form action="contact.php" method="POST">
+                        <input name="name" type="text" placeholder="Nombre"/>
+                        <!-- <input name="surname" type="text" placeholder="Apellidos"> -->
+                        <input name="mail" type="text" placeholder="E-Mail"/>
+                        <input name="phone" type="text" placeholder="Telefono"/>
+                        <input name="subject" type="text" placeholder="Asunto"/>
                         <textarea name="consult" id="" cols="30" rows="10" placeholder="Consulta"></textarea>
                         <button>Enviar</button>
                     </form>

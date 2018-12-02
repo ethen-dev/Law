@@ -9,8 +9,13 @@
 
 body {
     height: 100vh;
-    overflow: hidden;
-    overflow-y: hidden;
+    background: #202020;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .flex-container {
@@ -31,13 +36,13 @@ body {
 #wellcome-screen {
     background-image: url(../media/images/wellcome.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: left;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 0;
     .wellcome-content {
         margin-left: 10%;
@@ -84,6 +89,7 @@ body {
     top: 5%;
     position: absolute;
     z-index: 1;
+    font-size: 18px;
     .menu-list {
         height: auto;
         display: flex;
@@ -94,7 +100,7 @@ body {
             color: white;
             padding: 15px;
             text-align: center;
-            transition: color 0.5s 0.5s;
+            transition: color 0.5s;
             &.dark {
                 background: none;
                 color: $d-grey;
@@ -113,15 +119,15 @@ body {
 
 .content-container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     background: $white;
-    transform: translateY(100vh);
+    transform: translateY(100vh) scaleY(0);
     .div {
         width: 100%;
-        height: 100vh;
+        height: 100%;
     }
     .wrapper {
         width: 100%;
@@ -147,7 +153,7 @@ body {
                 input {
                     border: none;
                     padding: 15px;
-                    border-bottom: 2px solid $d-red;
+                    border-bottom: 1px solid $d-red;
                     margin: 1%;
                     &[name="name"] {
                         width: 100%;
@@ -166,7 +172,7 @@ body {
                     }
                     &:focus, &:hover {
                         outline: none;
-                        border-bottom: 2px solid $red;
+                        border-bottom: 1px solid $red;
                     }
                 }
                 textarea {
@@ -179,7 +185,7 @@ body {
                 }
                 button {
                     margin: 10px;
-                    padding: 20px;
+                    padding: 10px 15px;
                     background: $d-red;
                     color: $white;
                     transition: all 0.3s;
@@ -203,13 +209,11 @@ body {
                     margin-bottom: 25px;
                 }
                 iframe {
-                    height: 51%;
+                    height: 71%;
                     width: 80%;
                     border-radius: 2px;
                     border-bottom-right-radius: 0;
                     border-bottom-left-radius: 0;
-                    background: $d-red;
-                    padding: 15px;
                     box-shadow: 0 10px 40px -10px rgba(0, 64, 128, .2);
                 }
                 ul {
@@ -236,13 +240,87 @@ body {
             .content {
                 .wrap {
                     width: 85%;
+                    height: 100%;
+                    display: flex;   
+                    flex-direction: column;       
+                    justify-content: center;
                     h1 {
                         width: 60%;
                         color: $d-red;
-                        margin-bottom: 25px;
+                        margin: 25px 0;
                     }
                     p {
                         text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .content-container {
+        overflow-y: scroll;
+        .content {
+            width: 100%;
+            height: 50%;
+        }
+        .wrapper {
+            height: 120%;
+            flex-direction: column;
+            &[data-content="contact"] {
+                .content {
+                    align-items: center;
+                    height: 60%;
+                }
+                .fill {
+                    height: 40%;
+                    margin-bottom: 25px;
+                    iframe {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            &[data-content="who"] {
+                .picture {
+                    margin: 0;
+                    width: 100%;
+                    height: 40%;
+                }
+                .content {
+                    height: 60%;
+                    .wrap {
+                        p {
+                            font-size: 14px;
+                            margin-bottom: 5%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .content-container {
+        .wrapper{
+            &[data-content="who"] {
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-container {
+        .wrapper {
+            &[data-content="contact"] {
+                .content {
+                    h1 {
+                        width: 85%;
+                    }
+                    form {
+                        width: 85%;
                     }
                 }
             }
